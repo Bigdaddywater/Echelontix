@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Cinzel', serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    --gold-primary: #e0b159;
+    --gold-light: #F7D070;
+    --gold-dark: #9E7019;
+    --gold-glow: rgba(229, 169, 60, 0.25);
+    
+    --bg-dark: #070709;
+    --bg-card: #0E0E14;
+    --bg-surface: #14141E;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-gold: rgba(229, 169, 60, 0.3);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-dark);
+    color: #F3F4F6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom Luxury Gradients & Utilities */
+.bg-gold-metallic {
+  background: linear-gradient(135deg, #FDE68A 0%, #E5A93C 45%, #C27803 80%, #F59E0B 100%);
+}
+
+.text-gold-metallic {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FDE68A 25%, #F59E0B 65%, #B45309 100%);
+  -webkit-background-clip: text;
+  background-clip: text; /* 👈 Added for standard browser compatibility */
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-bright {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FDE68A 40%, #E5A93C 100%);
+  -webkit-background-clip: text;
+  background-clip: text; /* 👈 Added for standard browser compatibility */
+  -webkit-text-fill-color: transparent;
+}
+
+.border-gold-glow {
+  border-color: rgba(229, 169, 60, 0.35);
+  box-shadow: 0 0 25px -5px rgba(229, 169, 60, 0.15);
+}
+
+.border-gold-glow-strong {
+  border-color: rgba(229, 169, 60, 0.6);
+  box-shadow: 0 0 35px -2px rgba(229, 169, 60, 0.35);
+}
+
+.glass-panel {
+  background: rgba(14, 14, 20, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-nav {
+  background: rgba(7, 7, 9, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #070709;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #272733;
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #E5A93C;
+}
+
+/* Shimmer animation */
+@keyframes goldShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-gold {
+  background: linear-gradient(90deg, rgba(229, 169, 60, 0) 0%, rgba(229, 169, 60, 0.15) 50%, rgba(229, 169, 60, 0) 100%);
+  background-size: 200% 100%;
+  animation: goldShimmer 3.5s infinite;
+}
+
+/* Subtle float animation */
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: subtleFloat 5s ease-in-out infinite;
+}
