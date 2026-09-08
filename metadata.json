@@ -1,0 +1,6 @@
+{
+  "name": "Echelontix",
+  "description": "Premium ticketing and elevated event discovery platform for curated live experiences, festivals, nightlife, and campus events.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
