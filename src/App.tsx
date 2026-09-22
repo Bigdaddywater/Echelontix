@@ -53,6 +53,7 @@ export default function App() {
   
   // Default to null (Guest explorer) so users can explore and purchase without login
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(() => {
+    if (typeof window === 'undefined') return null;
     const saved = localStorage.getItem('echelontix_user');
     return saved ? JSON.parse(saved) : null;
   });
@@ -62,12 +63,14 @@ export default function App() {
 
   // Tickets stored in state + browser storage for guest accessibility
   const [purchasedTickets, setPurchasedTickets] = useState<PurchasedTicket[]>(() => {
-    const saved = localStorage.getItem('echelontix_passes');
-    if (saved) {
-      try {
-        return JSON.parse(saved);
-      } catch {
-        // fallback
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('echelontix_passes');
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch {
+          // fallback
+        }
       }
     }
     return [
