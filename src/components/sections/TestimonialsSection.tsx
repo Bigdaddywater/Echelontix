@@ -89,7 +89,9 @@ export const TestimonialsSection: React.FC = () => {
                       {current.authorName}
                     </h4>
                     {current.verified && (
-                      <ShieldCheck className="w-4 h-4 text-[#E5A93C]" title="Verified Ticket Holder" />
+                      <span title="Verified Ticket Holder">
+                        <ShieldCheck className="w-4 h-4 text-[#E5A93C]" />
+                      </span>
                     )}
                   </div>
                   <p className="text-xs text-zinc-400">

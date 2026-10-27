@@ -8,18 +8,18 @@ import { MobileNav } from './components/layout/MobileNav';
 import { Footer } from './components/layout/Footer';
 
 // Pages
-import { HomePage } from './pages/HomePage';
-import { ExplorePage } from './pages/ExplorePage';
-import { EventDetailsPage } from './pages/EventDetailsPage';
-import { LoginPage } from './pages/LoginPage';
-import { SignUpPage } from './pages/SignUpPage';
-import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
-import { VerifyEmailPage } from './pages/VerifyEmailPage';
-import { OrganizerDashboardPage } from './pages/OrganizerDashboardPage';
-import { UserDashboardPage } from './pages/UserDashboardPage';
-import { AdminDashboardPage } from './pages/AdminDashboardPage';
-import { CreateEventPage } from './pages/CreateEventPage';
-import { GateScannerPage } from './pages/GateScannerPage';
+import { HomePage } from './views/HomePage';
+import { ExplorePage } from './views/ExplorePage';
+import { EventDetailsPage } from './views/EventDetailsPage';
+import { LoginPage } from './views/LoginPage';
+import { SignUpPage } from './views/SignUpPage';
+import { ForgotPasswordPage } from './views/ForgotPasswordPage';
+import { VerifyEmailPage } from './views/VerifyEmailPage';
+import { OrganizerDashboardPage } from './views/OrganizerDashboardPage';
+import { UserDashboardPage } from './views/UserDashboardPage';
+import { AdminDashboardPage } from './views/AdminDashboardPage';
+import { CreateEventPage } from './views/CreateEventPage';
+import { GateScannerPage } from './views/GateScannerPage';
 
 // Shared Modals
 import { AuthModal } from './components/shared/AuthModal';
@@ -53,6 +53,7 @@ export default function App() {
   
   // Default to null (Guest explorer) so users can explore and purchase without login
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(() => {
+    if (typeof window === 'undefined') return null;
     const saved = localStorage.getItem('echelontix_user');
     return saved ? JSON.parse(saved) : null;
   });
@@ -62,12 +63,14 @@ export default function App() {
 
   // Tickets stored in state + browser storage for guest accessibility
   const [purchasedTickets, setPurchasedTickets] = useState<PurchasedTicket[]>(() => {
-    const saved = localStorage.getItem('echelontix_passes');
-    if (saved) {
-      try {
-        return JSON.parse(saved);
-      } catch {
-        // fallback
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('echelontix_passes');
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch {
+          // fallback
+        }
       }
     }
     return [

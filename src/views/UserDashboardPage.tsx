@@ -74,7 +74,9 @@ export const UserDashboardPage: React.FC<UserDashboardPageProps> = ({
               <h1 className="text-xl sm:text-2xl font-bold font-serif text-white">
                 {currentUser?.name || (purchasedTickets[0]?.holderName ? `${purchasedTickets[0].holderName}` : 'Guest Explorer')}
               </h1>
-              <ShieldCheck className="w-4 h-4 text-[#E5A93C]" title="Verified VIP Passholder" />
+              <span title="Verified VIP Passholder">
+                <ShieldCheck className="w-4 h-4 text-[#E5A93C]" />
+              </span>
             </div>
             <p className="text-xs text-zinc-400">
               {currentUser?.email || (purchasedTickets[0]?.holderEmail ? `${purchasedTickets[0].holderEmail} • Device Passes` : 'Temporary Device Session (No login required)')}

@@ -276,7 +276,9 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
                   <div className="flex items-center gap-1.5">
                     <h4 className="text-sm font-bold text-white">{event.organizer.name}</h4>
                     {event.organizer.verified && (
-                      <ShieldCheck className="w-4 h-4 text-[#E5A93C]" title="Verified Organizer" />
+                      <span title="Verified Organizer">
+                        <ShieldCheck className="w-4 h-4 text-[#E5A93C]" />
+                      </span>
                     )}
                   </div>
                   <p className="text-xs text-zinc-400">
